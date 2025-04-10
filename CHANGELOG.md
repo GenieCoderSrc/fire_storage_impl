@@ -1,3 +1,13 @@
+# Changelog
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Initial release of `fire_storage_impl`.
+- Added support for uploading files to Firebase Storage from mobile and web.
+- Included toast notification support using `app_toast`.
+- Basic localization support with `.translateWithoutContext()`.
+- Provided method for deleting files from Firebase Storage.
+- Included extension method for automatic file name generation.
+- Added `Uint8List` extension for image uploading (for web compatibility).
+- Includes `FileModel` for structured file handling.
+

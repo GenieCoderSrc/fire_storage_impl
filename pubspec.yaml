@@ -1,7 +1,10 @@
 name: fire_storage_impl
-description: "A new Flutter package project."
+description: "A lightweight Firebase Storage implementation for Flutter apps with support for file upload, deletion, toast notifications, and localization."
 version: 0.0.1
-homepage:
+homepage: https://github.com/GenieCoderSrc/fire_storage_impl
+repository: https://github.com/GenieCoderSrc/fire_storage_impl
+issue_tracker: https://github.com/GenieCoderSrc/fire_storage_impl/issues
+
 
 environment:
   sdk: ^3.7.2
@@ -10,6 +13,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  navigation_wihout_context: ^0.0.1
+  language_translator: ^0.0.1
+
+  image_picker: ^1.1.2
+  app_toast: ^0.0.4+1
+  equatable: ^2.0.7
+  firebase_storage: ^12.4.1
 
 dev_dependencies:
   flutter_test:
@@ -21,7 +32,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+example:
+  path: example
   # To add assets to your package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
