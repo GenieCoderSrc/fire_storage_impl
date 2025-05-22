@@ -1,4 +1,4 @@
-export 'config/di/file_register_get_it_di_fire_storage_data_source.dart';
+export 'config/dependensi_injection/file_register_get_it_di_fire_storage_data_source.dart';
 export 'constants/fire_storage_txt_const.dart';
 export 'constants/file_di_const_rest_api_data_source.dart';
 export 'constants/file_di_const_fire_storage_data_source.dart';

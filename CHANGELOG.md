@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.3
+- Created fileRegisterGetItDIFireStorageDataSource.
+
 ## 0.0.2
 - Implemented Repository.
 - Implemented Use cases.

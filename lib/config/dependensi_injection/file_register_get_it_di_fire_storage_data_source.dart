@@ -4,12 +4,11 @@ import 'package:fire_storage_impl/domain/repositories/file_repository_fire_stora
 import 'package:fire_storage_impl/domain/repositories/i_repositories/i_file_repository.dart';
 import 'package:get_it_di_global_variable/get_it_di.dart';
 
-
 void fileRegisterGetItDIFireStorageDataSource() {
   // Services
   sl.registerLazySingleton<IFireStorageService>(() => FireStorageServiceImpl());
 
   // Repositories
   sl.registerLazySingleton<IFileRepository>(
-      () => FileRepositoryFireStorageDataSourceImpl(iFireStorageService: sl()));
+          () => FileRepositoryFireStorageDataSourceImpl(iFireStorageService: sl()));
 }
