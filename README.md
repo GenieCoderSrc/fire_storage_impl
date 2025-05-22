@@ -92,5 +92,5 @@ This `README.md` provides installation instructions, basic usage examples, error
 
 ---
 
-Made with ❤ by [Shohidul Islam / GenieCoder]
+Made with by Shohidul Islam / GenieCoder
 
