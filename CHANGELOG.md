@@ -1,5 +1,23 @@
 # Changelog
 
+
+## 0.0.5
+- Remove This Files.
+  - file_register_get_it_di_fire_storage_data_source.
+  - file_use_cases_register_get_it_di.
+  - file_di_const_rest_api_data_source.
+  - file_di_const_fire_storage_data_source.
+  - file_model.
+  - file_entity.
+  - file_response_entity.
+  - file_repository_fire_storage_data_source_impl.
+  - i_file_repository.
+  - delete_file.
+  - upload_file.
+  - i_delete_file.
+  - i_upload_file.
+  - image_uploader.
+
 ## 0.0.4
 - Created file UseCases Register GetIt DI.
 
