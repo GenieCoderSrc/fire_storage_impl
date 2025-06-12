@@ -1,6 +1,9 @@
 # Changelog
 
 
+## 0.0.5+1
+- Update dependencies.
+
 ## 0.0.5
 - Remove This Files.
   - file_register_get_it_di_fire_storage_data_source.
