@@ -1,8 +1,8 @@
-
 import 'dart:io';
+
+import 'package:fire_storage_impl/fire_storage_impl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fire_storage_impl/data/data_sources/fire_storage_service_impl.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,13 +41,15 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
 
     if (!file.existsSync()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('File not found! Please update the path.')),
+        const SnackBar(
+          content: Text('File not found! Please update the path.'),
+        ),
       );
       return;
     }
 
     final url = await _storageService.uploadFile(
-      file,
+      file: file,
       fileName: 'example_upload',
       collectionPath: 'demos',
       uploadingToastTxt: 'Uploading image...',

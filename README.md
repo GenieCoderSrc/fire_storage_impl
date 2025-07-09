@@ -33,7 +33,7 @@ flutter pub get
 final fireStorage = FireStorageServiceImpl();
 
 String? downloadUrl = await fireStorage.uploadFile(
-  file,
+  file:file,
   fileName: 'example_image',
   collectionPath: 'user_uploads',
   uploadingToastTxt: 'Uploading...',
@@ -60,19 +60,6 @@ final downloadUrl = await imageData.uploadToFirebaseStorage(
 );
 ```
 
-## File Model (Optional)
-
-Use `FileModel` to pass file data in a structured format:
-
-```dart
-final fileModel = FileModel(
-  file: file,
-  fileName: 'my_image',
-  fileType: 'Images',
-  collectionPath: 'avatars',
-  uploadingToastTxt: 'Uploading avatar...'
-);
-```
 
 ## Requirements
 
@@ -92,5 +79,5 @@ This `README.md` provides installation instructions, basic usage examples, error
 
 ---
 
-Made with by Shohidul Islam / GenieCoder
+Developed and Maintained with ❤️ by [Shohidul Islam / GenieCoder](https://github.com/ShohidulProgrammer). Contributions welcome!
 

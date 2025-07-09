@@ -13,67 +13,60 @@ class FireStorageServiceImpl extends IFireStorageService {
   final FirebaseStorage _storage;
 
   FireStorageServiceImpl({FirebaseStorage? fireStorage})
-      : _storage = fireStorage ?? FirebaseStorage.instance;
+    : _storage = fireStorage ?? FirebaseStorage.instance;
 
-  /// The user selects a file, and the task is added to the list.
+  /// Uploads to Firebase Storage using either [file] or [bytes].
+  ///
+  /// Throws if both are null. [bytes] takes priority over [file].
   @override
-  Future<String?> uploadFile(
-    final File? file, {
+  Future<String?> uploadFile({
+    final File? file,
+    final Uint8List? bytes,
     final String? fileName,
-    final String? collectionPath,
+    final String? collectionPath = '',
     final String? uploadingToastTxt,
     final String fileType = 'Images',
   }) async {
     try {
-      if (file == null) {
+      // Enforce at least one non-null input
+      final Uint8List resolvedBytes;
+      if (bytes != null) {
+        resolvedBytes = bytes;
+      } else if (!kIsWeb && file != null) {
+        resolvedBytes = await file.readAsBytes();
+      } else {
         AppToast.showToast(msg: FireStorageTxtConst.fileNotSelected);
         return null;
       }
 
-      // set file name
-      final String fileName0 = fileName.getFileName();
-      final String extension = file.path.split('.').last;
+      // Extract extension from fileName
+      final String extension = _getExtension(fileName) ?? 'jpg';
+      final String baseName = fileName.getFileName();
+      final String fullName = '$baseName.$extension';
 
-      // UploadTask uploadTask;
-      TaskSnapshot uploadTask;
-
-      // Create a Reference to the file
       final Reference ref = _storage
           .ref()
           .child(fileType)
-          .child('/$collectionPath/$fileName0.$extension');
+          .child('/$collectionPath/$fullName');
 
       final SettableMetadata metadata = SettableMetadata(
-          contentType: 'image/jpeg',
-          customMetadata: <String, String>{'picked-file-path': file.path});
+        contentType: _detectContentType(extension),
+        customMetadata: {if (file != null) 'picked-file-path': file.path},
+      );
 
-      if (uploadingToastTxt != null && uploadingToastTxt.isNotEmpty) {
-        AppToast.showToast(msg: uploadingToastTxt.trim());
+      if (uploadingToastTxt?.trim().isNotEmpty == true) {
+        AppToast.showToast(msg: uploadingToastTxt!.trim());
       }
 
-      if (kIsWeb) {
-        uploadTask = await ref.putData(await file.readAsBytes(), metadata);
-      } else {
-        uploadTask = await ref.putFile(file, metadata);
-      }
-      final String imageUrl = await uploadTask.ref.getDownloadURL();
+      final uploadTask = await ref.putData(resolvedBytes, metadata);
+      final imageUrl = await uploadTask.ref.getDownloadURL();
 
-      debugPrint('FireStorageServiceImpl | uploadFile | imageUrl: $imageUrl');
-
+      debugPrint('uploadFile | imageUrl: $imageUrl');
       return imageUrl;
     } on PlatformException catch (e) {
-      String errorMsg = FireStorageTxtConst.failedToUpload;
-
-      debugPrint('Firebase Upload file error: $e');
-      if (e.code == 'unauthorized') {
-        errorMsg = FireStorageTxtConst.fileMustBeLessThan5Mb;
-      } else if (e.code == 'unknown') {
-        errorMsg = FireStorageTxtConst.internetConnectionFailed;
-      }
-      AppToast.showToast(msg: errorMsg);
-      return null;
+      return _handlePlatformException(e);
     } catch (e) {
-      debugPrint('Firebase Upload file error: $e');
+      debugPrint('uploadFile error: $e');
       return null;
     }
   }
@@ -81,19 +74,52 @@ class FireStorageServiceImpl extends IFireStorageService {
   @override
   Future<bool> deleteFile({required String imgUrl, String? successTxt}) async {
     try {
-      if (imgUrl.isNotEmpty) {
-        final Reference ref = _storage.refFromURL(imgUrl);
-        await ref.delete();
-        debugPrint('Image has been successfully deleted: $imgUrl');
-        if (successTxt != null) {
-          AppToast.showToast(msg: successTxt);
-        }
-        return true;
+      if (imgUrl.isEmpty) return false;
+      final ref = _storage.refFromURL(imgUrl);
+      await ref.delete();
+      debugPrint('Deleted: $imgUrl');
+      if (successTxt != null) {
+        AppToast.showToast(msg: successTxt);
       }
-      return false;
-    } catch (error) {
-      debugPrint('Error deleting image: $error');
+      return true;
+    } catch (e) {
+      debugPrint('Delete error: $e');
       return false;
     }
+  }
+
+  String? _getExtension(String? pathOrName) {
+    if (pathOrName == null || !pathOrName.contains('.')) return null;
+    return pathOrName.split('.').last;
+  }
+
+  String _detectContentType(String ext) {
+    switch (ext.toLowerCase()) {
+      case 'png':
+        return 'image/png';
+      case 'jpg':
+      case 'jpeg':
+        return 'image/jpeg';
+      case 'gif':
+        return 'image/gif';
+      case 'pdf':
+        return 'application/pdf';
+      case 'mp4':
+        return 'video/mp4';
+      default:
+        return 'application/octet-stream';
+    }
+  }
+
+  String? _handlePlatformException(PlatformException e) {
+    String msg = FireStorageTxtConst.failedToUpload;
+    if (e.code == 'unauthorized') {
+      msg = FireStorageTxtConst.fileMustBeLessThan5Mb;
+    } else if (e.code == 'unknown') {
+      msg = FireStorageTxtConst.internetConnectionFailed;
+    }
+    AppToast.showToast(msg: msg);
+    debugPrint('PlatformException: $e');
+    return null;
   }
 }
