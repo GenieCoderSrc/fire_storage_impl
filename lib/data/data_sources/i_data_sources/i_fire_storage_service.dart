@@ -1,14 +1,10 @@
-import 'dart:io';
-import 'dart:typed_data';
+import 'package:fire_storage_impl/data/models/upload_file.dart';
+import 'package:fire_storage_impl/typedefs/progress_callback.dart';
 
 abstract class IFireStorageService {
   Future<String?> uploadFile({
-    final File? file,
-    final Uint8List? bytes,
-    final String? fileName,
-    final String? collectionPath = '',
-    final String? uploadingToastTxt,
-    final String fileType = 'Images',
+    required UploadFile uploadFile,
+    ProgressCallback? onProgress,
   });
 
   Future<bool> deleteFile({required String imgUrl, String? successTxt});

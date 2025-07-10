@@ -1,5 +1,11 @@
 export 'constants/fire_storage_txt_const.dart';
 export 'data/data_sources/fire_storage_service_impl.dart';
 export 'data/data_sources/i_data_sources/i_fire_storage_service.dart';
+export 'data/models/upload_file.dart';
 export 'extensions/file_name_generator.dart';
+export 'extensions/file_upload_extension.dart';
 export 'extensions/image_uploader.dart';
+export 'extensions/platform_file_upload_extension.dart';
+export 'extensions/string_file_extension_ext.dart';
+export 'extensions/xfile_upload_extension.dart';
+export 'utils/content_type_util.dart';
