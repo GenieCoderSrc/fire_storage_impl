@@ -2,9 +2,9 @@
 
 import 'dart:typed_data';
 
+import 'package:cross_file/cross_file.dart';
 import 'package:fire_storage_impl/data/models/upload_file.dart';
 import 'package:fire_storage_impl/utils/file_category_resolver.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
 
 extension XFileToUploadFile on XFile {
