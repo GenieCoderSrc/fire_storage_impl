@@ -1,5 +1,28 @@
 # Changelog
 
+
+## 0.0.7
+
+### Jul 9, 2025
+
+### ✅ Updated
+
+- Added `onProgress` callback support to file upload handling for real-time progress tracking.
+- Modified `UploadFile` class:
+  - Replaced `File` and `Uint8List?` split input with a unified `Uint8List bytes` (required).
+  - Added support for additional metadata like `name`, `mimeType`, `collectionPath`, `uploadingToastTxt`, `metadata`, and `contentDisposition`.
+  - Introduced `FileCategory category` with default value `FileCategory.other`.
+
+### ✨ Added
+
+- New progress callback design for uploads, enabling UI-level feedback during file transfer.
+
+### ♻️ Refactored
+
+- Simplified upload logic by encapsulating upload data in the new `UploadFile` model.
+- Ensured better separation of concerns by pushing metadata handling responsibility to the caller.
+
+
 ## 0.0.6
 ### Jul 10, 2025
 

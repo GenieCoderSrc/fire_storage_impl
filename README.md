@@ -4,11 +4,13 @@ A lightweight Dart/Flutter package for simplified Firebase Storage file uploadin
 
 ## Features
 
-- Upload image files (`File` or `Uint8List`) to Firebase Storage
-- Delete uploaded files from Firebase Storage
-- Toast message integration using `app_toast`
-- Context-free localization support via `.translateWithoutContext()`
-- Automatic file name generation when not provided
+* Upload image files (`File` or `Uint8List`) to Firebase Storage
+* Delete uploaded files from Firebase Storage
+* Toast message integration using `app_toast`
+* Context-free localization support via `.translateWithoutContext()`
+* Automatic file name generation when not provided
+* Upload progress tracking via `onProgress` callback
+* Unified `UploadFile` model for structured file metadata
 
 ## Installation
 
@@ -33,10 +35,15 @@ flutter pub get
 final fireStorage = FireStorageServiceImpl();
 
 String? downloadUrl = await fireStorage.uploadFile(
-  file:file,
-  fileName: 'example_image',
-  collectionPath: 'user_uploads',
-  uploadingToastTxt: 'Uploading...',
+  uploadFile: UploadFile(
+    bytes: await file.readAsBytes(),
+    name: 'example_image',
+    collectionPath: 'user_uploads',
+    uploadingToastTxt: 'Uploading...',
+  ),
+  onProgress: (progress) {
+    print('Upload progress: \$progress');
+  },
 );
 ```
 
@@ -60,18 +67,17 @@ final downloadUrl = await imageData.uploadToFirebaseStorage(
 );
 ```
 
-
 ## Requirements
 
-- Firebase Core & Firebase Storage setup
-- Add `app_toast` and `translator` dependencies
-- Internet permission (mobile)
+* Firebase Core & Firebase Storage setup
+* Add `app_toast` and `translator` dependencies
+* Internet permission (mobile)
 
 ## Dependencies
 
-- firebase_storage
-- app_toast
-- translator (custom)
+* firebase_storage
+* app_toast
+* translator (custom)
 
 ## License
 
@@ -80,4 +86,3 @@ This `README.md` provides installation instructions, basic usage examples, error
 ---
 
 Developed and Maintained with ❤️ by [Shohidul Islam / GenieCoder](https://github.com/ShohidulProgrammer). Contributions welcome!
-
