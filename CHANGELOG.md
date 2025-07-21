@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.0.8
+
+### July 21, 2025
+
+### ✅ Updated
+
+- Separated upload model to image_code.
+
 ## 0.0.7
 
 ### Jul 9, 2025

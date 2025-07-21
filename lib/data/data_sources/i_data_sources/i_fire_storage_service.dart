@@ -1,5 +1,5 @@
-import 'package:fire_storage_impl/data/models/upload_file.dart';
 import 'package:fire_storage_impl/typedefs/progress_callback.dart';
+import 'package:image_core/image_core.dart';
 
 abstract class IFireStorageService {
   Future<String?> uploadFile({

@@ -1,13 +1,10 @@
 import 'package:app_toast/app_toast.dart';
-import 'package:fire_storage_impl/data/models/upload_file.dart';
-import 'package:fire_storage_impl/extensions/file_name_generator.dart';
-import 'package:fire_storage_impl/extensions/string_file_extension_ext.dart';
 import 'package:fire_storage_impl/typedefs/progress_callback.dart';
-import 'package:fire_storage_impl/utils/content_type_util.dart';
 import 'package:fire_storage_impl/utils/firebase_platform_exception_handler.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:image_core/image_core.dart';
 
 import 'i_data_sources/i_fire_storage_service.dart';
 

@@ -1,6 +1,7 @@
 import 'dart:typed_data';
-import 'package:fire_storage_impl/extensions/file_name_generator.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_core/image_core.dart';
 
 extension ImageUploader on Uint8List {
   Future<String> uploadToFirebaseStorage({
@@ -22,9 +23,11 @@ extension ImageUploader on Uint8List {
           .child('/$collectionPath/$fileName0.$extension');
 
       final SettableMetadata metadata = SettableMetadata(
-          contentType: '$fileType/$extension',
-          customMetadata: <String, String>{'picked-file-path': fileName.toString()});
-
+        contentType: '$fileType/$extension',
+        customMetadata: <String, String>{
+          'picked-file-path': fileName.toString(),
+        },
+      );
 
       UploadTask uploadTask = storageReference.putData(this, metadata);
 

@@ -1,7 +1,9 @@
 import 'dart:io';
+
 import 'package:fire_storage_impl/fire_storage_impl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:image_core/extensions/to_upload_file/file_upload_extension.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,12 +46,19 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
       return;
     }
 
-    final uploadFile = await file.toUploadFile(
+    final uploadFile = await file.toUploadFileFromFile(
       fileName: 'example_upload',
       collectionPath: 'demo_uploads',
       uploadingToastTxt: 'Uploading image...',
       metadata: {'demo-key': 'demo-value'},
     );
+
+    // final uploadFile = await file.toUploadFile(
+    //   fileName: 'example_upload',
+    //   collectionPath: 'demo_uploads',
+    //   uploadingToastTxt: 'Uploading image...',
+    //   metadata: {'demo-key': 'demo-value'},
+    // );
 
     if (uploadFile.bytes.isEmpty) {
       _showMessage('File is empty. Cannot upload.');
