@@ -16,13 +16,16 @@ dependencies:
     sdk: flutter
 
   language_translator: ^0.0.2
-  app_toast: ^0.0.4+1
-  firebase_storage: ^12.4.6
+  app_toast:
+    path: ../app_toast
+  image_core:
+    path: ../image_core
 
+  firebase_storage: ^12.4.6
   mime: ^2.0.0
   file_picker: ^10.2.0
   cross_file: ^0.3.4+2
-  image_core: ^0.0.3
+
 
 dev_dependencies:
   flutter_test:
