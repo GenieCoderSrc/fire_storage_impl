@@ -8,29 +8,29 @@ issue_tracker: https://github.com/GenieCoderSrc/fire_storage_impl/issues
 
 environment:
   sdk: ^3.8.1
-#  sdk: ^3.7.2
-#  flutter: ">=1.17.0"
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  language_translator: ^0.0.2
   app_toast:
     path: ../app_toast
   image_core:
     path: ../image_core
+  language_translator:
+    path: ../language_translator
 
-  firebase_storage: ^12.4.6
+  firebase_storage: ^13.0.0
   mime: ^2.0.0
-  file_picker: ^10.2.0
+  file_picker: ^10.2.1
   cross_file: ^0.3.4+2
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
