@@ -14,13 +14,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  app_toast:
-    path: ../app_toast
-  image_core:
-    path: ../image_core
-  language_translator:
-    path: ../language_translator
+  app_toast: ^0.0.4+1
+  image_core: ^0.0.3
+  language_translator: ^0.0.6+1
 
+  
   firebase_storage: ^13.0.0
   mime: ^2.0.0
   file_picker: ^10.2.1
