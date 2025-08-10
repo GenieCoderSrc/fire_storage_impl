@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.0.9
+
+### July 21, 2025
+
+### ✅ Updated
+
+- Updated dependencies.
+
 ## 0.0.8
 
 ### July 21, 2025
