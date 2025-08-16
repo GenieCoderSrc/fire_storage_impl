@@ -1,13 +1,11 @@
-import 'dart:io';
-
+import 'package:cross_file/cross_file.dart';
 import 'package:fire_storage_impl/fire_storage_impl.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:image_core/extensions/to_upload_file/file_upload_extension.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Make sure your firebase_options.dart is properly configured
+  await Firebase.initializeApp(); // Make sure firebase_options.dart is properly configured
   runApp(const MyApp());
 }
 
@@ -38,35 +36,28 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
   double _uploadProgress = 0.0;
 
   Future<void> _uploadFile() async {
+    // Example: replace with your own file picker logic
     const filePath = '/path/to/your/image.jpg';
-    final file = File(filePath);
+    final xfile = XFile(filePath);
 
-    if (!file.existsSync()) {
+// Validate XFile without dart:io (works on all platforms)
+    try {
+      final len = await xfile.length();
+      if (len == 0) {
+        _showMessage('File is empty. Please choose another file.');
+        return;
+      }
+    } catch (_) {
       _showMessage('File not found! Please update the path.');
       return;
     }
 
-    final uploadFile = await file.toUploadFileFromFile(
-      fileName: 'example_upload',
+    final url = await _storageService.uploadFile(
+      file: xfile,
+      category: 'images',
       collectionPath: 'demo_uploads',
       uploadingToastTxt: 'Uploading image...',
       metadata: {'demo-key': 'demo-value'},
-    );
-
-    // final uploadFile = await file.toUploadFile(
-    //   fileName: 'example_upload',
-    //   collectionPath: 'demo_uploads',
-    //   uploadingToastTxt: 'Uploading image...',
-    //   metadata: {'demo-key': 'demo-value'},
-    // );
-
-    if (uploadFile.bytes.isEmpty) {
-      _showMessage('File is empty. Cannot upload.');
-      return;
-    }
-
-    final url = await _storageService.uploadFile(
-      uploadFile: uploadFile,
       onProgress: (progress) {
         setState(() => _uploadProgress = progress);
       },
@@ -85,7 +76,7 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
   Future<void> _deleteFile() async {
     if (_downloadUrl != null) {
       final success = await _storageService.deleteFile(
-        imgUrl: _downloadUrl!,
+        fileUrl: _downloadUrl!,
         successTxt: 'Image deleted successfully!',
       );
       if (success) {

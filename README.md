@@ -4,13 +4,13 @@ A lightweight Dart/Flutter package for simplified Firebase Storage file uploadin
 
 ## Features
 
-* Upload image files (`File` or `Uint8List`) to Firebase Storage
+* Upload files with [`XFile`](https://pub.dev/packages/cross_file) (cross‑platform)
 * Delete uploaded files from Firebase Storage
 * Toast message integration using `app_toast`
 * Context-free localization support via `.translateWithoutContext()`
 * Automatic file name generation when not provided
 * Upload progress tracking via `onProgress` callback
-* Unified `UploadFile` model for structured file metadata
+* Safe storage path building with `StoragePathExtensions`
 
 ## Installation
 
@@ -29,20 +29,19 @@ flutter pub get
 
 ## Usage
 
-### Upload a File (Mobile or Web)
+### Upload a File with `XFile`
 
 ```dart
 final fireStorage = FireStorageServiceImpl();
 
-String? downloadUrl = await fireStorage.uploadFile(
-  uploadFile: UploadFile(
-    bytes: await file.readAsBytes(),
-    name: 'example_image',
-    collectionPath: 'user_uploads',
-    uploadingToastTxt: 'Uploading...',
-  ),
+final file = XFile('/path/to/image.jpg');
+
+final url = await fireStorage.uploadFile(
+  file: file,
+  category: 'images',
+  collectionPath: 'user_uploads',
   onProgress: (progress) {
-    print('Upload progress: \$progress');
+    print('Upload progress: $progress');
   },
 );
 ```
@@ -50,20 +49,19 @@ String? downloadUrl = await fireStorage.uploadFile(
 ### Delete a File
 
 ```dart
-bool success = await fireStorage.deleteFile(
-  imgUrl: downloadUrl!,
-  successTxt: 'Deleted successfully',
+final success = await fireStorage.deleteFile(
+  imgUrl: url!,
+  successTxt: 'Deleted successfully!',
 );
 ```
 
-### Upload Uint8List (e.g. Web image picker)
+### Build Safe Storage Path
 
 ```dart
-final imageData = Uint8List.fromList([...]);
-
-final downloadUrl = await imageData.uploadToFirebaseStorage(
-  fileName: 'web_image.jpeg',
-  collectionPath: 'web_uploads',
+final fullPath = StoragePathExtensions.buildStoragePath(
+  category: 'images',
+  collectionPath: 'profile_pics',
+  fullName: 'avatar.png',
 );
 ```
 
@@ -76,6 +74,7 @@ final downloadUrl = await imageData.uploadToFirebaseStorage(
 ## Dependencies
 
 * firebase_storage
+* cross_file
 * app_toast
 * translator (custom)
 

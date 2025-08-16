@@ -1,5 +1,14 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+## 0.1.0
+
+### Aug 17, 2025
+
+### ♻️ Refactored
+
+* Replaced `UploadFile` with `XFile`.
 
 ## 0.0.9
 
@@ -25,9 +34,10 @@
 
 - Added `onProgress` callback support to file upload handling for real-time progress tracking.
 - Modified `UploadFile` class:
-  - Replaced `File` and `Uint8List?` split input with a unified `Uint8List bytes` (required).
-  - Added support for additional metadata like `name`, `mimeType`, `collectionPath`, `uploadingToastTxt`, `metadata`, and `contentDisposition`.
-  - Introduced `FileCategory category` with default value `FileCategory.other`.
+    - Replaced `File` and `Uint8List?` split input with a unified `Uint8List bytes` (required).
+    - Added support for additional metadata like `name`, `mimeType`, `collectionPath`, `uploadingToastTxt`, `metadata`,
+      and `contentDisposition`.
+    - Introduced `FileCategory category` with default value `FileCategory.other`.
 
 ### ✨ Added
 
@@ -38,8 +48,8 @@
 - Simplified upload logic by encapsulating upload data in the new `UploadFile` model.
 - Ensured better separation of concerns by pushing metadata handling responsibility to the caller.
 
-
 ## 0.0.6
+
 ### Jul 10, 2025
 
 ### ✅ Updated
@@ -103,4 +113,3 @@
 - Included extension method for automatic file name generation.
 - Added `Uint8List` extension for image uploading (for web compatibility).
 - Includes `FileModel` for structured file handling.
-
