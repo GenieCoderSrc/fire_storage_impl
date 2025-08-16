@@ -40,7 +40,7 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
     const filePath = '/path/to/your/image.jpg';
     final xfile = XFile(filePath);
 
-// Validate XFile without dart:io (works on all platforms)
+    // Validate XFile without dart:io (works on all platforms)
     try {
       final len = await xfile.length();
       if (len == 0) {

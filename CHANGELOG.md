@@ -2,20 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.1.0
+## 0.0.9
 
 ### Aug 17, 2025
 
 ### ♻️ Refactored
 
-* Replaced `UploadFile` with `XFile`.
-
-## 0.0.9
-
-### July 21, 2025
-
-### ✅ Updated
-
+- Replaced `UploadFile` with `XFile`.
 - Updated dependencies.
 
 ## 0.0.8

@@ -4,9 +4,9 @@ extension StoragePathExtensions on List<String?> {
   /// - Skipping null or empty segments
   /// - Joining with `/`
   String buildStoragePath() {
-    final filtered = where((s) => s?.trim().isNotEmpty == true)
-        .map((s) => s!.trim())
-        .toList();
+    final filtered = where(
+      (s) => s?.trim().isNotEmpty == true,
+    ).map((s) => s!.trim()).toList();
     return filtered.join('/');
   }
 }
