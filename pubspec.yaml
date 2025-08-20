@@ -1,34 +1,30 @@
 name: fire_storage_impl
 description: "A lightweight Firebase Storage implementation for Flutter apps with support for file upload, deletion, toast notifications, and localization."
-version: 0.0.9
+version: 0.1.0
 homepage: https://github.com/GenieCoderSrc/fire_storage_impl
 repository: https://github.com/GenieCoderSrc/fire_storage_impl
 issue_tracker: https://github.com/GenieCoderSrc/fire_storage_impl/issues
 
 
 environment:
-  sdk: ^3.8.1
-  flutter: ">=1.17.0"
+  sdk: ^3.9.0
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  app_toast: ^0.0.4+1
-  language_translator: ^0.0.6+1
+  app_toast: ^0.0.5
+  language_translator: ^0.0.7
 
 
   firebase_storage: ^13.0.0
   cross_file: ^0.3.4+2
   mime: ^2.0.0
-#  image_core: ^0.0.4
-#  file_picker: ^10.3.1
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

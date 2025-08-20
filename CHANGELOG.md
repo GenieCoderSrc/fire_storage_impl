@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.0
+
+### Aug 22 2025
+
+### ✨ Updated
+
+- Updated `language_translator` to 0.0.7
+- Updated `app_toast` to 0.0.5
+- Removed `flutter_lints` Dependency
+- Updated Dart sdk to 3.9.0
+
 ## 0.0.9
 
 ### Aug 17, 2025
