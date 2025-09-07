@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.1
+
+### Aug 22 2025
+
+### ✨ Updated
+
+- Updated `firebase_storage` to 13.0.1
+
 ## 0.1.0
 
 ### Aug 22 2025
