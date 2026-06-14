@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.2
+
+### Jun 15, 2026
+
+### ✨ Updated
+- Updated `firebase_storage: ^13.4.2`
+- Updated `cross_file: ^0.3.5+2`
+
+
+
 All notable changes to this project will be documented in this file.
 
 ## 0.1.1
