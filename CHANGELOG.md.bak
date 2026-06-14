@@ -2,20 +2,6 @@
 
 All notable changes to this project will be documented in this file.
 
-
-
-
-## 0.1.2
-
-### Jun 15, 2026
-
-### ✨ Updated
-- Updated `firebase_storage: ^13.4.2`
-- Updated `cross_file: ^0.3.5+2`
-
-
-
-
 ## 0.1.1
 
 ### Aug 22 2025
@@ -139,4 +125,3 @@ All notable changes to this project will be documented in this file.
 - Included extension method for automatic file name generation.
 - Added `Uint8List` extension for image uploading (for web compatibility).
 - Includes `FileModel` for structured file handling.
-
