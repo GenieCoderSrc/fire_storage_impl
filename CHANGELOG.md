@@ -2,19 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-
-
-
 ## 0.1.2
 
 ### Jun 15, 2026
 
 ### ✨ Updated
+
 - Updated `firebase_storage: ^13.4.2`
 - Updated `cross_file: ^0.3.5+2`
-
-
-
+- Updated `app_toast: ^0.0.6`
 
 ## 0.1.1
 
@@ -61,7 +57,8 @@ All notable changes to this project will be documented in this file.
 - Added `onProgress` callback support to file upload handling for real-time progress tracking.
 - Modified `UploadFile` class:
     - Replaced `File` and `Uint8List?` split input with a unified `Uint8List bytes` (required).
-    - Added support for additional metadata like `name`, `mimeType`, `collectionPath`, `uploadingToastTxt`, `metadata`,
+    - Added support for additional metadata like `name`, `mimeType`, `collectionPath`,
+      `uploadingToastTxt`, `metadata`,
       and `contentDisposition`.
     - Introduced `FileCategory category` with default value `FileCategory.other`.
 
@@ -83,7 +80,8 @@ All notable changes to this project will be documented in this file.
 - `uploadFile` method now supports both `File?` and `Uint8List?` input.
 - Enforced a non-null constraint: either `file` or `bytes` must be provided.
 - Converted `uploadFile` to use named parameters for safer invocation.
-- Re-added the `uploadToFirebaseStorage` extension for `Uint8List`-based image uploading (for web compatibility).
+- Re-added the `uploadToFirebaseStorage` extension for `Uint8List`-based image uploading (for web
+  compatibility).
 
 ### ♻️ Refactored
 
