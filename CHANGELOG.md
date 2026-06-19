@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.3
+
+### Jun 15, 2026
+
+### ✨ Updated
+
+- Synchronized recursive dependencies and bumped version for stability.
+
 ## 0.1.2
 
 ### Jun 15, 2026
