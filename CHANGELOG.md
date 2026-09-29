@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.4
+
+### Sep 26, 2026
+
+### ✨ Updated
+
+- Updated `firebase_storage ^13.6.0`
+- Updated `mime ^2.1.0`
+
 ## 0.1.3
 
 ### Jun 15, 2026
@@ -16,9 +25,9 @@ All notable changes to this project will be documented in this file.
 
 ### ✨ Updated
 
-- Updated `firebase_storage: ^13.4.2`
-- Updated `cross_file: ^0.3.5+2`
-- Updated `app_toast: ^0.0.6`
+- Updated `firebase_storage ^13.4.2`
+- Updated `cross_file ^0.3.5+2`
+- Updated `app_toast ^0.0.6`
 
 ## 0.1.1
 
