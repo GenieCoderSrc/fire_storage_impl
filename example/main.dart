@@ -38,7 +38,7 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
   Future<void> _uploadFile() async {
     // Example: replace with your own file picker logic
     const filePath = '/path/to/your/image.jpg';
-    final xfile = XFile(filePath);
+    final xfile = XFile.fileSystem(path: filePath);
 
     // Validate XFile without dart:io (works on all platforms)
     try {
