@@ -9,7 +9,6 @@ All notable changes to this project will be documented in this file.
 ### ✨ Updated
 
 - Updated `firebase_storage ^13.6.0`
-- Updated `cross_file ^0.4.0`
 - Updated `mime ^2.1.0`
 
 ## 0.1.3
