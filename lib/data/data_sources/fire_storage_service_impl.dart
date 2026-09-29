@@ -32,10 +32,8 @@ class FireStorageServiceImpl extends IFireStorageService {
     try {
       final Uint8List bytes = await file.readAsBytes();
 
-      final String? originalName = await file.name();
-
-      final String baseName = fileName ?? originalName.getFileName();
-      final String ext = originalName.getFileExtension() ?? 'bin';
+      final String baseName = fileName ?? file.name.getFileName();
+      final String ext = file.name.getFileExtension() ?? 'bin';
       final String fullName = '$baseName.$ext';
 
       // ✅ Safe path building using extension
@@ -47,7 +45,7 @@ class FireStorageServiceImpl extends IFireStorageService {
       final String contentType = ContentTypeUtil.resolve(ext);
 
       final Map<String, String> finalMetadata = {
-        'original-name': ?originalName,
+        'original-name': file.name,
         if (metadata != null) ...metadata,
       };
 
