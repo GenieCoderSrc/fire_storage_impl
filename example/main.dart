@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Make sure firebase_options.dart is properly configured
+  await Firebase
+      .initializeApp(); // Make sure firebase_options.dart is properly configured
   runApp(const MyApp());
 }
 
@@ -38,7 +39,7 @@ class _UploadDemoPageState extends State<UploadDemoPage> {
   Future<void> _uploadFile() async {
     // Example: replace with your own file picker logic
     const filePath = '/path/to/your/image.jpg';
-    final xfile = XFile.fileSystem(path: filePath);
+    final xfile = XFile(filePath);
 
     // Validate XFile without dart:io (works on all platforms)
     try {
