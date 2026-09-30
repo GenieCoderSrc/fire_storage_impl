@@ -16,7 +16,7 @@ class FireStorageServiceImpl extends IFireStorageService {
   final FirebaseStorage _storage;
 
   FireStorageServiceImpl({FirebaseStorage? fireStorage})
-    : _storage = fireStorage ?? FirebaseStorage.instance;
+      : _storage = fireStorage ?? FirebaseStorage.instance;
 
   @override
   Future<String?> uploadFile({
